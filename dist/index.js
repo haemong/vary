@@ -38,9 +38,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var express = require('express');
 var cors = require('cors');
 var sequelize = require('./models').sequelize;
+// var router = require('./routes');
 require('dotenv').config();
 var app = express();
 app.use(cors());
+// app.use(router);
+
+sequelize.sync({force:false})
+    .then(()=>{
+        console.log('데이터베이스 연결됨')
+    }) .catch((err)=>{
+        console.log(err)
+    })
+    
 var PORT = Number(process.env.PORT);
 var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
