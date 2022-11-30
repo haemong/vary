@@ -1,14 +1,13 @@
-'use strict';
-
 import { Sequelize } from "sequelize";
-import  config  from "../config/config";
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/config')[env];
 
 export const sequelize = new Sequelize(
-  config.test.database || 'vary_nodejs_dev',
-  config.test.username as string,
-  config.test.password,
+  config.database || 'vary_nodejs_dev',
+  config.username as string,
+  config.password,
   {
     host:config.test.host,
-    dialect: 'postgres'
+    dialect:'postgres'
   },
 )
